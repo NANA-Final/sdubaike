@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sduonline.sdubaike.dao.EntryDao">
+
+    <insert id="insert" parameterType="com.sduonline.sdubaike.entity.domain.Entry" useGeneratedKeys="true" keyProperty="entryId">
+      INSERT INTO entry(entryName,entryCreatorId,entryCreatorName)
+      VALUES (#{entryName},#{entryCreatorId},#{entryCreatorName})
+  </insert>
+
+    <select id="selectById" parameterType="int" resultType="com.sduonline.sdubaike.entity.domain.Entry">
+        SELECT *
+        FROM entry
+        WHERE entryId = #{entryId}
+    </select>
+    <select id="selectByEntryName" parameterType="String" resultType="com.sduonline.sdubaike.entity.domain.Entry">
+        SELECT *
+        FROM entry
+        WHERE entryName LIKE CONCAT(CONCAT('%', #{entryName}), '%')
+    </select>
+    <select id="selectByPopularity" resultType="com.sduonline.sdubaike.entity.domain.Entry">
+        SELECT *
+        FROM entry
+        ORDER BY popularity desc
+        LIMIT 10
+    </select>
+
+    <update id="addPopularity" parameterType="int">
+        UPDATE entry
+        SET popularity = (popularity + 1)
+        WHERE entryId = #{entryId}
+    </update>
+
+</mapper>

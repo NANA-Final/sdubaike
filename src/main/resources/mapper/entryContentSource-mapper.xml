@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sduonline.sdubaike.dao.EntryContentSourceDao">
+    <insert id="insert" parameterType="com.sduonline.sdubaike.entity.domain.EntryContentSource" useGeneratedKeys="true" keyProperty="entryContentSourceId">
+        INSERT INTO entryContentSource(entryContentId,sourceName,url)
+        value (#{entryContentId},#{sourceName},#{url})
+    </insert>
+    <select id="selectByContentId" resultType="com.sduonline.sdubaike.entity.domain.EntryContentSource">
+        SELECT *
+        FROM entryContentSource
+        WHERE entryContentId = #{entryConcentId}
+    </select>
+</mapper>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sduonline.sdubaike.dao.EntryContentBasicInfoDao">
+    <insert id="insert" parameterType="com.sduonline.sdubaike.entity.domain.EntryContentBasicInfo" useGeneratedKeys="true" keyProperty="entryContentBasicInfoId">
+    INSERT INTO entryContentBasicInfo(entryContentId,infoName,infoValue)
+    value (#{entryContentId},#{infoName},#{infoValue})
+</insert>
+    <select id="selectByContentId" resultType="com.sduonline.sdubaike.entity.domain.EntryContentBasicInfo">
+        SELECT *
+        FROM entryContrntBasicInfo
+        WHERE entryContentId = #{entryConcentId}
+    </select>
+</mapper>

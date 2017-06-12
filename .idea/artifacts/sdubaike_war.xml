@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="sdubaike:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="sdubaike.war">
+      <element id="artifact" artifact-name="sdubaike:war exploded" />
+    </root>
+  </artifact>
+</component>

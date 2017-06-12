@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sduonline.sdubaike.dao.EntryContentLabelDao">
+    <insert id="insert" parameterType="com.sduonline.sdubaike.entity.domain.EntryContentLabel" useGeneratedKeys="true" keyProperty="entryContentLabelId">
+        INSERT INTO entryContentLabel(entryContentId,labelName,entryId)
+        value (#{entryContentId},#{labelName},#{entryId})
+    </insert>
+    <select id="selectByContentId" parameterType="int" resultType="com.sduonline.sdubaike.entity.domain.EntryContentLabel">
+        SELECT *
+        FROM entryContentLabel
+        WHERE entryContentId = #{entryConcentId}
+    </select>
+    <select id="selectByLabel" parameterType="String" resultType="java.lang.Integer">
+        SELECT entryId
+        DISTINCT entryId
+        FROM entryContentLabel
+        WHERE labelName = #{labelName}
+    </select>
+</mapper>

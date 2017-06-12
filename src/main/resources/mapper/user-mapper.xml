@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sduonline.sdubaike.dao.UserDao">
+    <insert id="insert" parameterType="com.sduonline.sdubaike.model.User" useGeneratedKeys="true" keyProperty="userId">
+        INSERT INTO user (username,password,headimg,name,major,age,grade,contact,campus)
+        VALUES (#{username},#{password},#{headimg},#{name},#{major},#{age},#{grade},#{contact},#{campus})
+    </insert>
+    <update id="update" parameterType="com.sduonline.sdubaike.model.User">
+        UPDATE user
+        SET password=#{password},headimg=#{headimg}},name=#{name},major=#{major},grade=#{grade},contact=#{contact},campus=#{campus}
+        WHERE userId=#{userId}
+    </update>
+    <delete id="delete" parameterType="int">
+        DELETE FROM user
+        WHERE userId=#{userId}
+    </delete>
+    <select id="selectById" parameterType="int" resultType="com.sduonline.sdubaike.model.User">
+        select * from user where userId= #{userId}
+    </select>
+    <select id="selectByUsername" parameterType="String" resultType="com.sduonline.sdubaike.model.User">
+        select * from user where username= #{username}
+    </select>
+
+</mapper>
